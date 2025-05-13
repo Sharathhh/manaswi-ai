@@ -15,15 +15,15 @@ A full-stack conversational AI chatbot that provides answers to mental health FA
 📄 CSV knowledge base on mental health topics
 
 🚀 Features
-📚 Loads and embeds Q&A pairs from a Mental_Health_FAQ.csv file
+📚 Loads and embeds Q&A pairs from a Mental_Health_FAQ.csv file.
 
-🔎 Performs semantic search over answers
+🔎 Performs semantic search over answers.
 
-💡 Responds intelligently using LangChain LLM chain
+💡 Responds intelligently using LangChain LLM chain.
 
-🧑‍💻 Clean and modern chatbot UI (React + Tailwind/Custom CSS)
+🧑‍💻 Clean and modern chatbot UI (React + Tailwind/Custom CSS).
 
-🌐 Ready for deployment as a full-stack app
+🌐 Ready for deployment as a full-stack app.
 
 🧩 Technologies
 Tech	Purpose
