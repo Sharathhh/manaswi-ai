@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+
 # 🧠 Manasvi AI — “the one with a mindful, balanced mind.”
 
 Manasvi (मनस्वि) is a Sanskrit word that means one with a strong, thoughtful, and balanced mind.
