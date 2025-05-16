@@ -1,4 +1,3 @@
-# mindfully-ai
 # 🧠 Mindfully AI
 
 > An AI-powered mental health assistant built with LangChain, Supabase, and Hugging Face — here to support your mental health.
