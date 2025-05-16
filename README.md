@@ -1,6 +1,6 @@
 # 🧠 Mindfully AI
 
-> An AI-powered mental health assistant built with LangChain, Supabase, and Hugging Face — here to support your mental health.
+ An AI-powered mental health assistant built with LangChain, Supabase, and Hugging Face — here to support your mental health.
 
 ---
 
@@ -18,6 +18,8 @@
 
 📄 CSV knowledge base on mental health topics
 
+---
+
 ## 🚀 Features
 📚 Loads and embeds Q&A pairs from a Mental_Health_FAQ.csv file.
 
@@ -28,6 +30,8 @@
 🧑‍💻 Clean and modern chatbot UI (React + Tailwind/Custom CSS).
 
 🌐 Ready for deployment as a full-stack app.
+
+---
 
 ## 🧩 Technologies
 
