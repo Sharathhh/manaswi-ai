@@ -1,8 +1,13 @@
 # mindfully-ai
+# 🧠 Mindfully AI
 
+> An AI-powered mental health assistant built with LangChain, Supabase, and Hugging Face — here to support your mental health.
 
-🧠 Mental Health Chatbot
-A full-stack conversational AI chatbot that provides answers to mental health FAQs using vector search and a local CSV dataset. Built with:
+---
+
+## 💡 Overview
+
+**Mindfully AI** is a full-stack chatbot designed to answer mental health–related questions using a locally embedded dataset. It combines the power of large language models (LLMs), vector search, and a custom mental health FAQ to provide meaningful, empathetic, and informative responses: 
 
 🧾 LangChain for retrieval-based question answering
 
@@ -14,7 +19,7 @@ A full-stack conversational AI chatbot that provides answers to mental health FA
 
 📄 CSV knowledge base on mental health topics
 
-🚀 Features
+## 🚀 Features
 📚 Loads and embeds Q&A pairs from a Mental_Health_FAQ.csv file.
 
 🔎 Performs semantic search over answers.
@@ -25,7 +30,8 @@ A full-stack conversational AI chatbot that provides answers to mental health FA
 
 🌐 Ready for deployment as a full-stack app.
 
-🧩 Technologies
+## 🧩 Technologies
+
 Tech	Purpose
 React + TypeScript	Frontend UI
 Node.js + Express	Backend API (/ask)
