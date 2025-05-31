@@ -25,6 +25,7 @@ Manasvi AI is an intelligent mental health chatbot built to support, inform, and
 ---
 
 ## 🚀 Features
+
 📚 Loads and embeds Q&A pairs from a Mental_Health_FAQ.csv file.
 
 🔎 Performs semantic search over answers.
