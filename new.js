@@ -42,6 +42,7 @@ fs.createReadStream('Mental_Health_FAQ.csv')
     console.log(`${result.length} pairs of question and answers`)
 
 
+    console.log(result)
 
 
     const splitter= new RecursiveCharacterTextSplitter({
@@ -53,6 +54,10 @@ fs.createReadStream('Mental_Health_FAQ.csv')
 
     const splitDocs= await splitter.splitDocuments(result)
 
+    console.log(`Split into ${splitDocs.length} chunks`)
+
+
+
     
     const client= createClient(supabaseUrl, supabaseKey)
 
@@ -63,6 +68,8 @@ fs.createReadStream('Mental_Health_FAQ.csv')
         model: 'sentence-transformers/all-MiniLM-L6-v2'
     })
 
+    console.log(embedding)
+
 
 
     const vectorStore= new SupabaseVectorStore(embedding,{
@@ -72,6 +79,12 @@ fs.createReadStream('Mental_Health_FAQ.csv')
     })
     
 
+    console.log('vector store created', vectorStore)
+
+
+    await vectorStore.addDocuments(splitDocs)
+
+    console.log('Doccuments successfully embedded and stored in supabase')
 
 
   })

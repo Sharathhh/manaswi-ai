@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.post("/api/chat", (req, res) => {
-  const prompt = req.body.prompt;
+  const prompt = "Who is 14 th prime minister of india";
   const ollama = spawn("ollama", ["run", "qwen3:0.6b"]);
 
   let output = "";
