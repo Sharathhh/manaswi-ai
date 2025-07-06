@@ -26,6 +26,11 @@ const Chatbot: React.FC = () => {
         body: JSON.stringify({ question }),
       });
 
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      } 
+
+
       const data = await res.json();
       setMessages((prev) => [...prev, { type: "bot", text: data.response }]);
     } catch (err) {

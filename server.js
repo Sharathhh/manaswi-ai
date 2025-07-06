@@ -10,9 +10,11 @@ import {StringOutputParser} from '@langchain/core/output_parsers'
 
 import { SupabaseVectorStore } from '@langchain/community/vectorstores/supabase';
 
-
 import { formatConvHistory } from "./utils/fromatConvHistory.js";
 
+import {spawn} from 'child_process';
+
+import {Ollama} from '@langchain/community/llms/ollama';
 
 import express from 'express';
 
@@ -27,6 +29,7 @@ dotenv.config();
 const HF_TOKEN = process.env.HF_TOKEN;
 
 
+
 const app= express()
 app.use(cors())
 app.use(express.json())
@@ -35,14 +38,20 @@ app.use(express.json())
 
 
 app.post('/ask', async (req, res)=>{
-    const question = req.body.question
+    const {question}= req.body
+    if (!question) {
+        return res.status(400).json({error: 'Question is required'})
+    }
     try{
         const response= await chain.invoke({question: question, conv_history: convHistory})
 
+        const cleanResponse= cleanedResponse(response)
+        
+        console.log('response:', cleanResponse)
         convHistory.push(question)
-        convHistory.push(response)
+        convHistory.push(cleanResponse)
 
-        res.json({response})
+        res.json({response:cleanResponse})
     }catch(error){
         console.error(error)
         res.status(500).json({error: 'Something went wrong'})
@@ -57,12 +66,11 @@ app.listen(port, ()=>{
 
 
 
+const llm = new Ollama({
+  model: 'qwen3:0.6b',
+  temperature: 0.7,
+  maxTokens: 200,
 
-const llm = new HuggingFaceInference({
-  model: "HuggingFaceH4/zephyr-7b-beta",
-  apiKey: HF_TOKEN,
-  temperature: 0.5,
-  maxTokens: 100
 });
 
 const standaloneQuestionTemplate= 'Given some conversation history (if any) and a question, convert the question into a standalone question. conversation history: {conv_history} question: {question} standalone question:'
@@ -73,7 +81,7 @@ const standaloneQuestionprompt = PromptTemplate.fromTemplate(standaloneQuestionT
 
 const answerTemplate= `You are helpful and enthusiastic support bot named Manaswi, who can answer a given question about mental health based on the context
  on the context provided and conversation history. Try to find the answer in the context . If you really don't know the answer, say "I am sorry, I don't know the
-answer to that." And direct the questioner to email help@manaswi.com . Don't try to make up an answer. Always speak as if you were chatting with a friend.
+answer to that. And direct the questioner to email help@manaswi.com ". Don't try to make up an answer. Always speak as if you were chatting with a friend.
 context: {context}
 conversation history: {conv_history}
 question: {question}
@@ -96,6 +104,7 @@ const retrieverChain= RunnableSequence.from([
 
 const answerChain= answerPrompt.pipe(llm).pipe(new StringOutputParser())
 
+// Create the main chain that combines all the steps
 
 
 const chain = RunnableSequence.from([
@@ -115,6 +124,12 @@ const chain = RunnableSequence.from([
 
 
 ])
+
+
+function cleanedResponse(text){
+  return text.replace(/<think>[\s\S]*?<\/think>/g, "").trim();
+  
+}
 
 const convHistory=[]
 

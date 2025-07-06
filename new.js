@@ -10,9 +10,9 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const supabaseUrl= process.env.SUPABASE_URL
+const supabaseUrl= 'https://eheyqrprdbkintuxwbsl.supabase.co'
 
-const supabaseKey= process.env.SUPABASE_KEY
+const supabaseKey= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoZXlxcnByZGJraW50dXh3YnNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU1MTA4MzMsImV4cCI6MjA2MTA4NjgzM30.RZ8l5ALGz0S_sKKhAQ1LRfPC3GqDMoHL3H55oE-9KFg'
 
 const result = [];
 
@@ -46,8 +46,8 @@ fs.createReadStream('Mental_Health_FAQ.csv')
 
 
     const splitter= new RecursiveCharacterTextSplitter({
-        chunkSize: 500,
-        separators: ['\n\n', '\n', ' ',],
+        chunkSize: 384,
+        separators: ['\n\n', '\n', '.', '?', '!', '。', '？', '！', ' '],
         chunkOverlap: 50,
     })
 
@@ -65,26 +65,18 @@ fs.createReadStream('Mental_Health_FAQ.csv')
 
     const embedding=  new HuggingFaceInferenceEmbeddings({
         apiKey: process.env.HUGGINGFACEHUB_API_KEY,
-        model: 'sentence-transformers/all-MiniLM-L6-v2'
+        model: 'DMetaSoul/Dmeta-embedding-zh'
     })
-
-    console.log(embedding)
 
 
 
     const vectorStore= new SupabaseVectorStore(embedding,{
         client: client,
         tableName: 'documents',
-        queryName: 'doc_match',
+        queryName: 'match_documents',
     })
     
 
-    console.log('vector store created', vectorStore)
-
-
-    await vectorStore.addDocuments(splitDocs)
-
-    console.log('Doccuments successfully embedded and stored in supabase')
 
 
   })
