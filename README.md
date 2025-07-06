@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # 🧠 Manasvi AI — “the one with a mindful, balanced mind.”
 
 Manasvi (मनस्वि) is a Sanskrit word that means one with a strong, thoughtful, and balanced mind.
@@ -14,9 +12,11 @@ Manasvi AI is an intelligent mental health chatbot built to support, inform, and
 
 🧾 LangChain for retrieval-based question answering
 
-🤗 Hugging Face embeddings (all-MiniLM-L6-v2)
+🤗 Hugging Face embeddings (DMetaSoul/Dmeta-embedding-zh)
 
 🛢️ Supabase vector store 
+
+🤖  Ollama model for text generation
 
 💬 React + TypeScript frontend
 
