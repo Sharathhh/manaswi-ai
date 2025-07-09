@@ -47,3 +47,9 @@ LangChain	LLM orchestration
 Hugging Face	Text embeddings
 Supabase	Vector DB for document search
 csv-parser	Load questions/answers from CSV
+
+## Demo
+
+![Screenshot (22)](https://github.com/user-attachments/assets/b7ee9e75-6478-45f2-bd37-db74585021d8)
+
+
