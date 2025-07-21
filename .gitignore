@@ -26,3 +26,7 @@ dist-ssr
 .Mental_Health_FAQ.csv
 /utils
 Mental_Health_FAQ.csv
+
+/src/new.html
+.components
+hii.json
