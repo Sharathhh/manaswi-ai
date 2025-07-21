@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive UI Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations and effects */
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+        
+        .wave-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header with gradient background -->
+    <header class="gradient-bg text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 py-16">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Hi, I'm Sharath</h1>
+                    <p class="text-xl md:text-2xl mb-8">Machine Learning Engineer & Full Stack Developer</p>
+                    <button id="ctaButton" class="bg-white text-indigo-600 font-bold rounded-full py-3 px-8 shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                        View My Projects
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="floating">
+                        <i class="fas fa-rocket text-8xl text-white opacity-90"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wave-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-20">Amazing Features</h2>
+            <div class="flex flex-col md:flex-row md:-mx-3">
+                <div class="w-full md:w-1/3 px-3 mb-8 md:mb-0">
+                    <div class="bg-white rounded-lg shadow-lg p-8 card-hover-effect transition duration-300">
+                        <div class="text-indigo-600 mb-4">
+                            <i class="fas fa-brain text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Machine Learning</h3>
+                        <p class="text-gray-600">TensorFlow, Computer Vision, NLP, Predictive Modeling</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-8 md:mb-0">
+                    <div class="bg-white rounded-lg shadow-lg p-8 card-hover-effect transition duration-300">
+                        <div class="text-indigo-600 mb-4">
+                            <i class="fas fa-code text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Full Stack</h3>
+                        <p class="text-gray-600">JavaScript, Python, Node.js, React.js, MongoDB, REST APIs</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-3">
+                    <div class="bg-white rounded-lg shadow-lg p-8 card-hover-effect transition duration-300">
+                        <div class="text-indigo-600 mb-4">
+                            <i class="fas fa-robot text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">AI Solutions</h3>
+                        <p class="text-gray-600">Web Scraping, Automation, Data Pipelines, Deployment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-16">My Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover-effect">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">Full-stack ecommerce app with React frontend, Node.js backend and MongoDB</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">React</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover-effect">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Real-time Chat App</h3>
+                        <p class="text-gray-600 mb-4">Websocket-based chat application with user authentication</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Socket.io</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Express</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">JWT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover-effect">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Helmet Detection Model</h3>
+                        <p class="text-gray-600 mb-4">Computer vision model to detect helmet usage in real-time</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">TensorFlow</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">OpenCV</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Python</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover-effect">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Web Scraper</h3>
+                        <p class="text-gray-600 mb-4">Automated data collection tool with scheduling capabilities</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">BeautifulSoup</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Selenium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-16">What People Say</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 flex justify-center mb-10 md:mb-0">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonial" class="rounded-full w-40 h-40 object-cover border-4 border-white shadow-lg">
+                        <div class="absolute -bottom-3 -right-3 bg-indigo-600 rounded-full p-3">
+                            <i class="fas fa-quote-left text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <div class="bg-white p-8 rounded-lg shadow-lg relative">
+                        <div class="absolute top-0 left-0 -mt-4 ml-8 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white"></div>
+                        <p class="text-gray-700 text-lg mb-6">"This is absolutely amazing! The design is clean and modern, and the functionality is top-notch. I've never seen anything like it before."</p>
+                        <div class="flex items-center">
+                            <div>
+                                <h4 class="font-bold text-gray-800">Sarah Johnson</h4>
+                                <p class="text-gray-600">CEO, Tech Solutions</p>
+                            </div>
+                            <div class="ml-auto text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-indigo-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Subscribe to our newsletter for the latest updates and news.</p>
+            <div class="flex flex-col md:flex-row justify-center max-w-xl mx-auto">
+                <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-l-full md:rounded-r-none rounded-r-full w-full mb-4 md:mb-0 text-gray-800 focus:outline-none">
+                <button class="bg-indigo-800 hover:bg-indigo-900 px-6 py-3 rounded-r-full md:rounded-l-none rounded-l-full font-bold transition duration-300">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">Sharath's Portfolio</h3>
+                    <p class="text-gray-400 max-w-md">Machine Learning Engineer & Full Stack Developer creating innovative solutions at the intersection of AI and web technologies.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-4">Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Features</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">About</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Social</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Interactive UI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-indigo-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible transition-opacity duration-300">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 mx-4 transform transition-all duration-300 scale-95">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800">Let's Connect!</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mb-6">
+                <p class="text-gray-700 mb-4">I'm available for freelance projects and full-time opportunities in machine learning and web development.</p>
+                <p class="text-gray-700">Email: sharath@example.com</p>
+                <p class="text-gray-700">Phone: +1 (123) 456-7890</p>
+            </div>
+            <div class="flex justify-end">
+                <button id="confirmModal" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+                    Got it!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[id^="counter"]');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target') || 
+                    (counter.id === 'counter1' ? 125 : 
+                     counter.id === 'counter2' ? 342 : 
+                     counter.id === 'counter3' ? 987 : 15));
+                
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if(count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Show modal when CTA button is clicked
+        document.getElementById('ctaButton').addEventListener('click', function() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.querySelector('.transform').classList.remove('scale-95');
+        });
+
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('opacity-0', 'invisible');
+            modal.querySelector('.transform').classList.add('scale-95');
+        });
+
+        // Confirm modal
+        document.getElementById('confirmModal').addEventListener('click', function() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('opacity-0', 'invisible');
+            modal.querySelector('.transform').classList.add('scale-95');
+            
+            // Show a temporary message
+            const originalText = document.getElementById('ctaButton').innerText;
+            document.getElementById('ctaButton').innerText = 'Thank You!';
+            
+            setTimeout(() => {
+                document.getElementById('ctaButton').innerText = originalText;
+            }, 2000);
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.remove('invisible', 'opacity-0');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Initialize counters when scrolled into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('[id^="counter"]').forEach(counter => {
+            observer.observe(counter);
+        });
+    </script>
+</body>
+</html>

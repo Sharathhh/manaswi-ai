@@ -34,6 +34,7 @@ You are an intent classifier. Classify the following message into one of these c
 - mental_health: questions about anxiety, depression, therapy, panic, feelings, etc.
 - smalltalk: greetings like "hi", "hello", "how are you", "what's up", etc.
 - non_mental_query: questions unrelated to mental health.
+- about_me: questions about chatbot or about you.
 
 Examples:
 "Hi there" → smalltalk  
@@ -44,6 +45,8 @@ Examples:
 "What's your name?" → smalltalk  
 "Tell me about depression" → mental_health  
 "How do I make pasta?" → non_mental_query  
+"Who are you?" → about_me
+"What's your name? → about_me
 
 Now classify this:
 
@@ -56,8 +59,8 @@ const detectIntent = async (msg) => {
   console.log("🧠 Raw LLM result:", result);
 
   // Match one of the valid intents explicitly
-  const intentMatch = result.match(/\b(mental_health|smalltalk|non_mental_query|emergency)\b/i);
-  const intent = intentMatch ? intentMatch[1].toLowerCase() : "non_mental_query";
+  const intentMatch = result.match(/\b(mental_health|smalltalk|non_mental_query|about_me)\b/i);
+  const intent = intentMatch
 
   console.log("✅ Final intent:", intent);
   return intent;
@@ -67,7 +70,7 @@ const detectIntent = async (msg) => {
 // Prompt Templates
 // ---------------------
 const standaloneQuestionTemplate = `
-Given some conversation history (if any) and a question, convert the question into a standalone question.
+Given some conversation history (if any) and a question, convert the question into a standalone question and correct the grammar and spelling mistake.
 
 Conversation history: {conv_history}
 Question: {question}
@@ -157,6 +160,25 @@ app.post('/ask', async (req, res) => {
         return res.json({ response: cleanResponse });
 
       case 'non_mental_query':
+        const non_mental_reply= ["I'm designed to help with mental health and emotional well-being, I can't assist with this query. If you have any mental health related question, feel free to ask",
+                                  "Sorry, I'm designed to help with mental health query.",
+                                  "I'm desinged to help with mental and emotional well being, I can't assist with this query. Have any mental health related questions to ask.?"
+
+
+        ]
+        const non_mental_query_reply= non_mental_query_reply[Math.floor(Math.random()* non_mental_reply.length)]
+        convHistory.push(question, non_mental_query_reply)
+        return res.json({response: non_mental_query_reply})
+
+
+        case 'about_me':
+          const about_me= "I'm Manaswi AI,a mental health and emotional well-being chatbot build by Sharath U."
+
+          convHistory.push(question, about_me)
+          return res.json({response: about_me })
+
+
+
       default:
         return res.json({
           response: "I'm designed to help with mental health and emotional well-being. I can't assist with this query. If you have any mental health-related questions, feel free to ask! 💬"
